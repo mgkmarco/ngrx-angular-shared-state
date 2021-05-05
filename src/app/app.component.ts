@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef,ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { MyOtherCounterComponent } from './my-other-counter/my-other-counter.component';
+import { MyYetAnotherCounterComponent } from './my-yet-another-counter/my-yet-another-counter.component';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,8 @@ import { MyOtherCounterComponent } from './my-other-counter/my-other-counter.com
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @ViewChild('myOtherCounter') iframe: ElementRef;
+  @ViewChild('myOtherCounter') myOtherCounterFrame: ElementRef;
+  @ViewChild('myYetAnotherCounter') myYetAnotherCounterFrame: ElementRef;
 
   doc: any;
   compRef: any;
@@ -17,16 +19,23 @@ export class AppComponent {
     private resolver: ComponentFactoryResolver) {}
 
 
-  onLoad() {
-    this.doc = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow;
+  onLoadMyOtherCounter() {
+    this.doc = this.myOtherCounterFrame.nativeElement.contentDocument || this.myOtherCounterFrame.nativeElement.contentWindow;
     const compFactory = this.resolver.resolveComponentFactory(MyOtherCounterComponent);
     this.compRef = this.vcRef.createComponent(compFactory);
 
     this.doc.body.appendChild(this.compRef.location.nativeElement);
   }
+  
+  onLoadMyYetAnotherCounter() {
+    this.doc = this.myYetAnotherCounterFrame.nativeElement.contentDocument || this.myYetAnotherCounterFrame.nativeElement.contentWindow;
+    const anotherCompFactory = this.resolver.resolveComponentFactory(MyYetAnotherCounterComponent);
+    this.compRef = this.vcRef.createComponent(anotherCompFactory);
+
+    this.doc.body.appendChild(this.compRef.location.nativeElement);
+  }
 
   ngAfterViewInit() {
-
   }
 
   ngOnDestroy() {

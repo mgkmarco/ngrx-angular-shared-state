@@ -2,7 +2,9 @@
 
 <app-my-counter></app-my-counter>
 <p>this is another counter</p>
-<iframe #myOtherCounter (load)="onLoad()"></iframe>
+<iframe #myOtherCounter (load)="onLoadMyOtherCounter()"></iframe>
+<iframe #myYetAnotherCounter (load)="onLoadMyYetAnotherCounter()"></iframe>
+
 <!-- 
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://github.com/ngrx/platform

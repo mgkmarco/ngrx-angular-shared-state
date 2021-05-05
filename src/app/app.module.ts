@@ -7,11 +7,12 @@ import { counterReducer } from './features/counter/counter.reducer';
 import { AppComponent } from './app.component';
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { MyOtherCounterComponent } from './my-other-counter/my-other-counter.component';
+import { MyYetAnotherCounterComponent } from './my-yet-another-counter/my-yet-another-counter.component';
 
 @NgModule({
   imports: [BrowserModule, StoreModule.forRoot({ count: counterReducer })],
-  declarations: [AppComponent, MyCounterComponent, MyOtherCounterComponent ],
-  entryComponents: [ MyOtherCounterComponent],
+  declarations: [AppComponent, MyCounterComponent, MyOtherCounterComponent, MyYetAnotherCounterComponent],
+  // entryComponents: [ MyOtherCounterComponent, MyYetAnotherCounterComponent ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
